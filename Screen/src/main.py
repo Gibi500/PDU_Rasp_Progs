@@ -25,7 +25,8 @@ GPIO.setwarnings(False)
 GPIO.setup(device_pin_0, GPIO.OUT)
 GPIO.setup(device_pin_1, GPIO.OUT)
 GPIO.setup(device_pin_2, GPIO.OUT)
-GPIO.setup(device_toggle, GPIO.OUT)
+GPIO.setup(device_turn_off, GPIO.OUT)
+GPIO.setup(device_turn_on, GPIO.OUT)
 
 def toggle_device(pageID, compID, device_id):
     if device_id < 0 or device_id >= 8:
