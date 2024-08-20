@@ -67,8 +67,8 @@ def turn_all_devices_off():
 
 def screen_connected_callback(channel):
     print("Button pressed!")
-    for i in range(0, NUMBER_OF_DEVICES):
-        update_device_state(nxApp.ID_HOME_BUTTON_TOGGLE_DEVICES[i][0], nxApp.ID_HOME_BUTTON_TOGGLE_DEVICES[i][1], i)
+    # for i in range(0, NUMBER_OF_DEVICES):
+    #     update_device_state(nxApp.ID_HOME_BUTTON_TOGGLE_DEVICES[i][0], nxApp.ID_HOME_BUTTON_TOGGLE_DEVICES[i][1], i)
 
 ######### make connection to serial UART to read/write NEXTION
 ser = nxlib.ser
