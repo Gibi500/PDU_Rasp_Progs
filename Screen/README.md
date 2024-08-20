@@ -17,7 +17,7 @@ sudo apt install python3
 After you have installed python you can install the required package to make a virtual environment by running the following command:
 
 ```bash
-sudo apt install python3-pandas python3-venv python3-rpi.gpio
+sudo apt install python3-pandas python3-venv
 ```
 
 After you have installed the required package you can create a virtual environment by running the following command:
@@ -35,7 +35,7 @@ source ~/user_interface/.venv/bin/activate
 After you have activated the virtual environment you can install the required packages by running the following command:
 
 ```bash
-# none at the moment
+pip3 install pyserial RPi.GPIO 
 ```
 
 After you have installed the required packages you can clone the repository and go to the root of the repository.
@@ -68,6 +68,8 @@ The program works as follows:
 
 ### TODO 
 
+
+- [ ] on start up everything should be turned off.
 - [ ] Try to read the data of the backend using the api to display the data on the screen. 
 
 

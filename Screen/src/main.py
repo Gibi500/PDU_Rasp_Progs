@@ -12,12 +12,13 @@ NUMBER_OF_DEVICES = 5
 device_pin_0 = 16
 device_pin_1 = 20
 device_pin_2 = 21
-device_toggle = 12
+device_turn_on = 12
+device_turn_off = 7
 
 green = 2024
 red = 63488
 
-state_device = [False, False, False, False, False, False, False, False]
+state_device = [true, true, true, true, true, true, true, true]
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
@@ -34,24 +35,31 @@ def toggle_device(pageID, compID, device_id):
     GPIO.output(device_pin_0, (device_id >> 0) & 0x01)
     GPIO.output(device_pin_1, (device_id >> 1) & 0x01)
     GPIO.output(device_pin_2, (device_id >> 2) & 0x01)
-    
-    GPIO.output(device_toggle, GPIO.LOW)
-    sleep(10 / 1000000)                     # 10 microseconds delay
-    GPIO.output(device_toggle, GPIO.HIGH)
-    sleep(10 / 1000000)                     # 10 microseconds delay
-    GPIO.output(device_toggle, GPIO.LOW)
 
     if state_device[device_id]:
+        GPIO.output(device_turn_off, GPIO.LOW)
+        sleep(10 / 1000000)                     # 10 microseconds delay
+        GPIO.output(device_turn_off, GPIO.HIGH)
+        sleep(10 / 1000000)                     # 10 microseconds delay
+        GPIO.output(device_turn_off, GPIO.LOW)
         nxlib.nx_setBackground(ser, pageID, compID, red)
         nxlib.nx_setGlobalVariable(ser, "dev{}".format(device_id), 0)
         state_device[device_id] = False
     else:
+        GPIO.output(device_turn_on, GPIO.LOW)
+        sleep(10 / 1000000)                     # 10 microseconds delay
+        GPIO.output(device_turn_on, GPIO.HIGH)
+        sleep(10 / 1000000)                     # 10 microseconds delay
+        GPIO.output(device_turn_on, GPIO.LOW)
         nxlib.nx_setBackground(ser, pageID, compID, green)
         nxlib.nx_setGlobalVariable(ser, "dev{}".format(device_id), 1)
         state_device[device_id] = True
     return 1
 
-    
+def turn_all_devices_off():
+    for i in range(0, NUMBER_OF_DEVICES):
+        state_device[i] = true
+        toggle_device(nxApp.ID_HOME_BUTTON_TOGGLE_DEVICES[i][0], nxApp.ID_HOME_BUTTON_TOGGLE_DEVICES[i][1], i)
 
 ######### make connection to serial UART to read/write NEXTION
 ser = nxlib.ser
@@ -64,6 +72,7 @@ EndCom = "\xff\xff\xff"                     # 3 last bits to end serial communic
 
 def detect_touch(e_rd, e_rdw):
     global t_rdw, p
+    turn_all_devices_off()
     while True:
         try:
             touch = ser.read_until(EndCom)
