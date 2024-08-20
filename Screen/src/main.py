@@ -14,6 +14,7 @@ device_pin_1 = 20
 device_pin_2 = 21
 device_turn_on = 12
 device_turn_off = 7
+screen_connect = 17
 
 green = 2024
 red = 63488
@@ -27,6 +28,7 @@ GPIO.setup(device_pin_1, GPIO.OUT)
 GPIO.setup(device_pin_2, GPIO.OUT)
 GPIO.setup(device_turn_off, GPIO.OUT)
 GPIO.setup(device_turn_on, GPIO.OUT)
+GPIO.setup(screen_connect, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
 def update_device_state(pageID, compID, device_id):
     nxlib.nx_setBackground(ser, pageID, compID, (green if state_device[device_id] else red))
@@ -62,6 +64,11 @@ def turn_all_devices_off():
     for i in range(0, NUMBER_OF_DEVICES):
         state_device[i] = True
         toggle_device(nxApp.ID_HOME_BUTTON_TOGGLE_DEVICES[i][0], nxApp.ID_HOME_BUTTON_TOGGLE_DEVICES[i][1], i)
+
+def screen_connected_callback(channel):
+    print("Button pressed!")
+    for i in range(0, NUMBER_OF_DEVICES):
+        update_device_state(nxApp.ID_HOME_BUTTON_TOGGLE_DEVICES[i][0], nxApp.ID_HOME_BUTTON_TOGGLE_DEVICES[i][1], i)
 
 ######### make connection to serial UART to read/write NEXTION
 ser = nxlib.ser
@@ -99,6 +106,8 @@ e_rdw = threading.Event()
 
 end_rd = threading.Event()
 end_rdw = threading.Event()
+
+GPIO.add_event_detect(screen_connect, GPIO.FALLING, callback=screen_connected_callback, bouncetime=100)
 
 # THREAD - DETECT push buttons
 t_serialread = threading.Thread(target=detect_touch, name='read serial',args=(e_rd,e_rdw,))
