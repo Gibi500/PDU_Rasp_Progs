@@ -29,7 +29,7 @@ GPIO.setup(device_turn_off, GPIO.OUT)
 GPIO.setup(device_turn_on, GPIO.OUT)
 
 def update_device_state(pageID, compID, device_id):
-    nxlib.nx_setBackground(ser, pageID, compID, red)
+    nxlib.nx_setBackground(ser, pageID, compID, (green if state_device[device_id] else red))
     nxlib.nx_setGlobalVariable(ser, "dev{}".format(device_id), state_device[device_id])
 
 def toggle_device(pageID, compID, device_id):
