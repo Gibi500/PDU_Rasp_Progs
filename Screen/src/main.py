@@ -28,6 +28,10 @@ GPIO.setup(device_pin_2, GPIO.OUT)
 GPIO.setup(device_turn_off, GPIO.OUT)
 GPIO.setup(device_turn_on, GPIO.OUT)
 
+def update_device_state(pageID, compID, device_id):
+    nxlib.nx_setBackground(ser, pageID, compID, red)
+    nxlib.nx_setGlobalVariable(ser, "dev{}".format(device_id), state_device[device_id])
+
 def toggle_device(pageID, compID, device_id):
     if device_id < 0 or device_id >= 8:
         print("Invalid device_id")
@@ -42,9 +46,7 @@ def toggle_device(pageID, compID, device_id):
         sleep(10 / 1000000)                     # 10 microseconds delay
         GPIO.output(device_turn_off, GPIO.HIGH)
         sleep(10 / 1000000)                     # 10 microseconds delay
-        GPIO.output(device_turn_off, GPIO.LOW)
-        nxlib.nx_setBackground(ser, pageID, compID, red)
-        nxlib.nx_setGlobalVariable(ser, "dev{}".format(device_id), 0)
+        GPIO.output(device_turn_off, GPIO.LOW)       
         state_device[device_id] = False
     else:
         GPIO.output(device_turn_on, GPIO.LOW)
@@ -52,9 +54,8 @@ def toggle_device(pageID, compID, device_id):
         GPIO.output(device_turn_on, GPIO.HIGH)
         sleep(10 / 1000000)                     # 10 microseconds delay
         GPIO.output(device_turn_on, GPIO.LOW)
-        nxlib.nx_setBackground(ser, pageID, compID, green)
-        nxlib.nx_setGlobalVariable(ser, "dev{}".format(device_id), 1)
         state_device[device_id] = True
+    update_device_state(pageID, compID, device_id)
     return 1
 
 def turn_all_devices_off():
