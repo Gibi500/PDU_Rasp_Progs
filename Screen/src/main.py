@@ -18,7 +18,7 @@ device_turn_off = 7
 green = 2024
 red = 63488
 
-state_device = [true, true, true, true, true, true, true, true]
+state_device = [True, True, True, True, True, True, True, True]
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
