@@ -73,7 +73,7 @@ def detect_touch(e_rd, e_rdw):
                 event_touch = touch[3]
                 print("page= {}, component= {}, event= {}".format(pageID_touch,compID_touch,event_touch))
 
-                print(ID_BUTTON_TOGGLE_DEVICE1)
+                print(nxApp.ID_BUTTON_TOGGLE_DEVICE1)
 
                 for i in range(0, NUMBER_OF_DEVICES):
                     if (pageID_touch, compID_touch) == nxApp.ID_HOME_BUTTON_TOGGLE_DEVICES[i]:
