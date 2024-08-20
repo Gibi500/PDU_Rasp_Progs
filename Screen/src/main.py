@@ -83,7 +83,6 @@ def detect_touch(e_rd, e_rdw):
                     if (pageID_touch, compID_touch) == nxApp.ID_BUTTON_TOGGLE_DEVICES[i]:
                         toggle_device(i)
                         print("toggle device")
-                        break
         except:
             pass
 
