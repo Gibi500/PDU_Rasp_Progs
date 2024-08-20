@@ -59,7 +59,7 @@ def toggle_device(pageID, compID, device_id):
 
 def turn_all_devices_off():
     for i in range(0, NUMBER_OF_DEVICES):
-        state_device[i] = true
+        state_device[i] = True
         toggle_device(nxApp.ID_HOME_BUTTON_TOGGLE_DEVICES[i][0], nxApp.ID_HOME_BUTTON_TOGGLE_DEVICES[i][1], i)
 
 ######### make connection to serial UART to read/write NEXTION
