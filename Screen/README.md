@@ -66,12 +66,14 @@ The program works as follows:
 3. My code afterwards looks at witch page and component it is and sends a signal to the MCU to toggle the device. afterwards it will send a command to the screen to toggle the color of the button to show the state of the device.
 4. repeat 
 
+Important property is that the screen reads the global variable devx (with x being a number) to see if the device is on or off. But it only reads this variable when the page is loaded. So when you change the state of the device you have to change the background color manually.
+
 ### TODO 
 
 
-- [ ] on start up everything should be turned off.
+- [V] on start up everything should be turned off.
 - [ ] Try to read the data of the backend using the api to display the data on the screen. 
-
+- [V] When the screen is connected push the data trough to the screen.
 
 
 
