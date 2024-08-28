@@ -43,6 +43,7 @@ def toggle_device(pageID, compID, device_id):
     GPIO.output(device_pin_1, (device_id >> 1) & 0x01)
     GPIO.output(device_pin_2, (device_id >> 2) & 0x01)
 
+    update_device_state(pageID, compID, device_id)
     state_device[device_id] = not state_device[device_id]
     on_off = device_turn_on if state_device[device_id] else device_turn_off
     
