@@ -115,7 +115,7 @@ def read_data():
 def acknowledge_read():
     global state_acknowledge
     state_acknowledge = not state_acknowledge
-    GPIO.output(ACK_GPIO, state_acknowledge)
+    GPIO.output(ACK_MCU, state_acknowledge)
     
 
 GPIO.setmode(GPIO.BCM)
