@@ -17,7 +17,7 @@ data_queue = deque()
 
 device_id = -1
 
-state_acknowledge = False
+global state_acknowledge = False
 
 ACK_MPU = 25
 ACK_MCU = 8
