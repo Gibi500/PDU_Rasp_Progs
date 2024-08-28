@@ -43,21 +43,15 @@ def toggle_device(pageID, compID, device_id):
     GPIO.output(device_pin_1, (device_id >> 1) & 0x01)
     GPIO.output(device_pin_2, (device_id >> 2) & 0x01)
 
-    if state_device[device_id]:
-        GPIO.output(device_turn_off, GPIO.LOW)
-        sleep(10 / 1000000)                     # 10 microseconds delay
-        GPIO.output(device_turn_off, GPIO.HIGH)
-        sleep(10 / 1000000)                     # 10 microseconds delay
-        GPIO.output(device_turn_off, GPIO.LOW)       
-        state_device[device_id] = False
-    else:
-        GPIO.output(device_turn_on, GPIO.LOW)
-        sleep(10 / 1000000)                     # 10 microseconds delay
-        GPIO.output(device_turn_on, GPIO.HIGH)
-        sleep(10 / 1000000)                     # 10 microseconds delay
-        GPIO.output(device_turn_on, GPIO.LOW)
-        state_device[device_id] = True
-    update_device_state(pageID, compID, device_id)
+    state_device[device_id] = not state_device[device_id]
+    on_off = device_turn_on if state_device[device_id] else device_turn_off
+    
+    GPIO.output(on_off, GPIO.LOW)
+    sleep(10 / 1000000)                     # 10 microseconds delay
+    GPIO.output(on_off, GPIO.HIGH)
+    sleep(10 / 1000000)                     # 10 microseconds delay
+    GPIO.output(on_off, GPIO.LOW) 
+
     return 1
 
 def turn_all_devices_off():
