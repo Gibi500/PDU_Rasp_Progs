@@ -208,5 +208,5 @@ print("Main loop")
 GPIO.add_event_detect(Process_Data, GPIO.BOTH, callback=screen_connected_callback, bouncetime=5)
 
 while True:
-    
+    sleep(1)
         
