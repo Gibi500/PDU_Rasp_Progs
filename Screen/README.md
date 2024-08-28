@@ -35,7 +35,7 @@ source ~/user_interface/.venv/bin/activate
 After you have activated the virtual environment you can install the required packages by running the following command:
 
 ```bash
-pip3 install pyserial rpi-lgpio
+pip3 install pyserial rpi-lgpio requests
 ```
 
 After you have installed the required packages you can clone the repository and go to the root of the repository.

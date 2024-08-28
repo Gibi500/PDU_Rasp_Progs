@@ -133,7 +133,7 @@ pool = concurrent.futures.ThreadPoolExecutor(max_workers=2)
 
 print("Main loop")
 while True:
-    if GPIO.input(DATA_READY_GPIO) != state_acknowledge:
+    if GPIO.input(ACK_MPU) != state_acknowledge:
         print("read_data started")
 
         if(device_id == -1):
