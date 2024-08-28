@@ -131,14 +131,14 @@ def Process_Data(channel):
             myobj["device_id"] = device_id
             myobj["type_data"] = data_type
             acknowledge_read()
-            continue
+            break
 
         if(number_of_data_points == 0):
             print("Number of data points not set")
             number_of_data_points = read_data()
             print("Number of data points:", number_of_data_points)
             acknowledge_read()
-            continue
+            break
 
         if(number_of_data_points > 0 and data_type == -1):
             print("Data points left")
@@ -171,7 +171,7 @@ def Process_Data(channel):
                     print("Invalid data type")
 
             myobj["value_data"] = value_data_final
-            continue
+            break
 
         if(number_of_data_points > 0 and delta_time == -1):
             print("Delta time not set")
