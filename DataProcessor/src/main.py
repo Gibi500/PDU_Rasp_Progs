@@ -116,24 +116,8 @@ def acknowledge_read():
     global state_acknowledge
     state_acknowledge = not state_acknowledge
     GPIO.output(ACK_MCU, state_acknowledge)
-    
 
-GPIO.setmode(GPIO.BCM)
-
-GPIO.setup(ACK_MCU, GPIO.OUT)
-
-GPIO.setup(ACK_MPU, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-
-for i in range(DATA_GPIOS.__len__()):
-    GPIO.setup(DATA_GPIOS[i], GPIO.IN, pull_up_down=GPIO.PUD_UP)
-
-
-GPIO.output(ACK_MCU, GPIO.LOW)
-
-pool = concurrent.futures.ThreadPoolExecutor(max_workers=2)
-
-print("Main loop")
-while True:
+def Process_Data(channel):
     if GPIO.input(ACK_MPU) != state_acknowledge:
         print("read_data started")
 
@@ -205,4 +189,24 @@ while True:
                 value_data_final = -1
                 delta_time = -1
 
+
+GPIO.setmode(GPIO.BCM)
+
+GPIO.setup(ACK_MCU, GPIO.OUT)
+
+GPIO.setup(ACK_MPU, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+
+for i in range(DATA_GPIOS.__len__()):
+    GPIO.setup(DATA_GPIOS[i], GPIO.IN, pull_up_down=GPIO.PUD_UP)
+
+
+GPIO.output(ACK_MCU, GPIO.LOW)
+
+pool = concurrent.futures.ThreadPoolExecutor(max_workers=2)
+
+print("Main loop")
+GPIO.add_event_detect(Process_Data, GPIO.BOTH, callback=screen_connected_callback, bouncetime=5)
+
+while True:
+    
         
