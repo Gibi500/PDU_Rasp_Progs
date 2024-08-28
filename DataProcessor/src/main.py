@@ -16,8 +16,8 @@ myobj = {"device_id": 0, "type_data": 0, "value_data": 0, "delta_time": 0}
 data_queue = deque()
 
 device_id = -1
-voltage_value = 0
-current_value = 0
+
+state_acknowledge = False
 
 ACK_MPU = 25
 ACK_MCU = 8
@@ -126,7 +126,7 @@ GPIO.setup(ACK_MPU, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 for i in range(DATA_GPIOS.__len__()):
     GPIO.setup(DATA_GPIOS[i], GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
-state_acknowledge = False
+
 GPIO.output(ACK_MCU, GPIO.LOW)
 
 pool = concurrent.futures.ThreadPoolExecutor(max_workers=2)
