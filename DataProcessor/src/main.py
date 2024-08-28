@@ -205,7 +205,7 @@ GPIO.output(ACK_MCU, GPIO.LOW)
 pool = concurrent.futures.ThreadPoolExecutor(max_workers=2)
 
 print("Main loop")
-GPIO.add_event_detect(Process_Data, GPIO.BOTH, callback=screen_connected_callback, bouncetime=5)
+GPIO.add_event_detect(ACK_MPU, GPIO.BOTH, callback=Process_Data, bouncetime=5)
 
 while True:
     sleep(1)
