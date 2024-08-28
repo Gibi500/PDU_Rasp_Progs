@@ -66,11 +66,11 @@ def turn_all_devices_off():
         toggle_device(nxApp.ID_HOME_BUTTON_TOGGLE_DEVICES[i][0], nxApp.ID_HOME_BUTTON_TOGGLE_DEVICES[i][1], i)
 
 def screen_connected_callback(channel):
-    print("Button pressed!")
+    print("Screen connected!")
     for i in range(0, NUMBER_OF_DEVICES):
         update_device_state(nxApp.ID_HOME_BUTTON_TOGGLE_DEVICES[i][0], nxApp.ID_HOME_BUTTON_TOGGLE_DEVICES[i][1], i)
 
-######### make connection to serial UART to read/write NEXTION
+# make connection to serial UART to read/write NEXTION
 ser = nxlib.ser
 
 nxlib.nx_setsys(ser, 'bauds', nxlib.BAUD)   # set default baud (default baud rate of nextion from fabric is 9600)
