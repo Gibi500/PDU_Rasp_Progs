@@ -17,7 +17,7 @@ data_queue = deque()
 
 device_id = -1
 
-global state_acknowledge = False
+state_acknowledge = False
 
 ACK_MPU = 25
 ACK_MCU = 8
@@ -113,6 +113,7 @@ def read_data():
     return data
 
 def acknowledge_read():
+    global state_acknowledge
     state_acknowledge = not state_acknowledge
     GPIO.output(ACK_GPIO, state_acknowledge)
     
