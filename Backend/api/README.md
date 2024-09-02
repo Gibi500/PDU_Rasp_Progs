@@ -21,6 +21,14 @@ Please change the path to the file to the correct path and use the absolute path
 psql -d power_switch_devices -U postgres -f /home/Power/PDU_Rasp_Progs/Backend/initdb/init.sql
 ```
 
+### Some useful commands
+
+To see the 10 latest measurements you can use the following command (you need to change the table name to the correct table name):
+
+```SQL
+SELECT * FROM voltage_measurements ORDER BY created DESC LIMIT 10;
+```
+
 ## API
 
 ### installation of nodejs
