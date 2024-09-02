@@ -9,6 +9,11 @@ The concept is simple there are tables for every type of measurement. So the eve
 ### Installation of postgreSQL
 
 
+
+```bash
+apt install postgresql postgresql-client-16
+```
+
 ### Create a database
 
 to create the table use the init.sql file in the initdb folder. 

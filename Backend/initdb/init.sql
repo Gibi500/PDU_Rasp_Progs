@@ -1,9 +1,12 @@
+DROP TABLE devices CASCADE;
+
 CREATE TABLE IF NOT EXISTS devices(
     dev_id SERIAL PRIMARY KEY,
     name VARCHAR(255)
 );
 
-INSERT INTO devices(name) VALUES ('Device 1'),
+INSERT INTO devices (name) VALUES 
+('Device 1'),
 ('Device 2'),
 ('Device 3'),
 ('Device 4'),
@@ -11,6 +14,8 @@ INSERT INTO devices(name) VALUES ('Device 1'),
 ('Device 6'),
 ('Device 7'),
 ('Device 8');
+
+
 
 CREATE TABLE IF NOT EXISTS voltage_measurements(
   id SERIAL NOT NULL PRIMARY KEY,
