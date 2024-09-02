@@ -15,8 +15,6 @@ INSERT INTO devices (name) VALUES
 ('Device 7'),
 ('Device 8');
 
-
-
 CREATE TABLE IF NOT EXISTS voltage_measurements(
   id SERIAL NOT NULL PRIMARY KEY,
   dev_id INT,
