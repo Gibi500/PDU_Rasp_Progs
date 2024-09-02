@@ -15,7 +15,10 @@ class NextionApp:
                  {'id': 7, 'type': 'text', 'name': 't1'},
                  {'id': 8, 'type': 'text', 'name': 't2'},
                  {'id': 9, 'type': 'text', 'name': 't3'},
-                 {'id': 10, 'type': 'text', 'name': 't4'}
+                 {'id': 10, 'type': 'text', 'name': 't4'},
+                 {'id': 12, 'type': 'text', 'name': 't5'},
+                 {'id': 14, 'type': 'text', 'name': 't6'},
+                 {'id': 16, 'type': 'text', 'name': 't7'}
              ]
              },
             {'id': 1, 'name': 'Device 1',
