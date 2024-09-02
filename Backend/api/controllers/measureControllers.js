@@ -137,3 +137,36 @@ exports.getLatestMeasurementDevice5 = function(req, res, next) {
         }        
     });
 }
+
+exports.getLatestMeasurementDevice6 = function(req, res, next) {
+    // Get most recent measurement from db and return as JSON.
+    pool.query(QueryForLatestMeasurement, [6], (error, results) => {
+        if (error){
+            res.status(400).send(error);
+        } else {
+            res.status(200).json(results.rows);
+        }        
+    });
+}
+
+exports.getLatestMeasurementDevice7 = function(req, res, next) {
+    // Get most recent measurement from db and return as JSON.
+    pool.query(QueryForLatestMeasurement, [7], (error, results) => {
+        if (error){
+            res.status(400).send(error);
+        } else {
+            res.status(200).json(results.rows);
+        }        
+    });
+}
+
+exports.getLatestMeasurementDevice8 = function(req, res, next) {
+    // Get most recent measurement from db and return as JSON.
+    pool.query(QueryForLatestMeasurement, [8], (error, results) => {
+        if (error){
+            res.status(400).send(error);
+        } else {
+            res.status(200).json(results.rows);
+        }        
+    });
+}
