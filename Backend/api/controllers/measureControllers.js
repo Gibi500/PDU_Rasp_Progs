@@ -63,7 +63,7 @@ exports.postMeasurement = function(req, res, next) {
                 break;
         }
 
-        let values = [(device_id + 1), value_data]
+        let values = [(device_id + 1), value_data, delta_time]
         // Pass an array of values as the second 
         // argument for pool.query() method to 
         // build the query string safely.
