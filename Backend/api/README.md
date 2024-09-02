@@ -46,6 +46,13 @@ npm audit fix
 
 ### run the server
 
+Before you can run the server you have to make a .env file you can copy the .env.example file and change the values to your own values.
+easy command to copy the file:
+
+```bash
+cp .env_example .env
+```
+
 to run the server you can run the following command:
 
 ```bash

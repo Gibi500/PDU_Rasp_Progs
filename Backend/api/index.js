@@ -11,7 +11,7 @@ app.use(express.json());
 app.use('/measurements', measurementsRouter);
 
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}  ${process.env['PORT']}`)
+  console.log(`Example app listening at http://localhost:${port}`)
 })
 
 // const mysql = require('mysql2');
