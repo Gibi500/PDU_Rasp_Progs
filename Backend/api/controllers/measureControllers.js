@@ -87,7 +87,7 @@ exports.getLatestMeasurementDevice1 = function(req, res, next) {
     // Get most recent measurement from db and return as JSON.
     pool.query(QueryForLatestMeasurement, [1], (error, results) => {
         if (error)
-            res.status(400).send(error);
+            
             throw error;
         res.status(200).json(results.rows);
     });
@@ -97,6 +97,7 @@ exports.getLatestMeasurementDevice2 = function(req, res, next) {
     // Get most recent measurement from db and return as JSON.
     pool.query(QueryForLatestMeasurement, [2], (error, results) => {
         if (error)
+            res.status(400).send(error);
             throw error;
         res.status(200).json(results.rows);
     });
