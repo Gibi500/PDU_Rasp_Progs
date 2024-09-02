@@ -1,6 +1,6 @@
 var pool = require('../config/database');
 
-var QueryForLatestMeasurement = `SELECT voltage_measurements.dev_id, voltage_measurements.voltage, current_measurements.current, active_power_measurements.power, imaginary_power_measurements.power, apparent_power_measurements.power, power_factor_measurements.power_factor, peak_current_measurements.peak_current
+var QueryForLatestMeasurement = `SELECT voltage_measurements.dev_id, voltage_measurements.voltage, current_measurements.current, active_power_measurements.power AS active_power, imaginary_power_measurements.power AS imaginary_power, apparent_power_measurements.power AS apparent_power, power_factor_measurements.power_factor, peak_current_measurements.peak_current
                                 FROM voltage_measurements
                                 FULL JOIN current_measurements ON voltage_measurements.dev_id = current_measurements.dev_id
                                 FULL JOIN active_power_measurements ON voltage_measurements.dev_id = active_power_measurements.dev_id
@@ -60,6 +60,7 @@ exports.postMeasurement = function(req, res, next) {
                 insertSQL = `INSERT INTO peak_current_measurements(dev_id, peak_current, delta_time_from_last_measurement) VALUES ($1, $2, $3);`
                 break;
             default:
+                res.status(400).send('Invalid data type\n');
                 break;
         }
 

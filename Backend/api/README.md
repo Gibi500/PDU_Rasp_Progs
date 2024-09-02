@@ -14,10 +14,11 @@ apt install postgresql postgresql-client-16
 
 ### Create a database
 
-to create the table use the init.sql file in the initdb folder. 
+to create the table use the init.sql file in the initdb folder.
+Please change the path to the file to the correct path and use the absolute path for the least trouble.
 
 ```bash
-psql -U postgres -f initdb/init.sql
+psql -d power_switch_devices -U postgres -f /home/Power/PDU_Rasp_Progs/Backend/initdb/init.sql
 ```
 
 ## API
