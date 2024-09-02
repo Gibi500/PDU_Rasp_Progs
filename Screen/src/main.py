@@ -32,7 +32,7 @@ GPIO.setup(screen_connect, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
 def update_device_state(pageID, compID, device_id):
     nxlib.nx_setBackground(ser, pageID, compID, (green if state_device[device_id] else red))
-    nxlib.nx_setGlobalVariable(ser, "dev{}".format(device_id), state_device[device_id])
+    nxlib.nx_setGlobalVariable(ser, "dev{}".format(device_id), 1 if state_device[device_id] else 0)
 
 def toggle_device(pageID, compID, device_id):
     if device_id < 0 or device_id >= 8:
