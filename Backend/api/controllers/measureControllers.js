@@ -86,46 +86,54 @@ exports.postMeasurement = function(req, res, next) {
 exports.getLatestMeasurementDevice1 = function(req, res, next) {
     // Get most recent measurement from db and return as JSON.
     pool.query(QueryForLatestMeasurement, [1], (error, results) => {
-        if (error)
-            
-            throw error;
-        res.status(200).json(results.rows);
+        if (error){
+            res.status(400).send(error);
+        } else {
+            res.status(200).json(results.rows);
+        }        
     });
 }
 
 exports.getLatestMeasurementDevice2 = function(req, res, next) {
     // Get most recent measurement from db and return as JSON.
     pool.query(QueryForLatestMeasurement, [2], (error, results) => {
-        if (error)
+        if (error){
             res.status(400).send(error);
-            throw error;
-        res.status(200).json(results.rows);
+        } else {
+            res.status(200).json(results.rows);
+        }        
     });
 }
 
 exports.getLatestMeasurementDevice3 = function(req, res, next) {
     // Get most recent measurement from db and return as JSON.
     pool.query(QueryForLatestMeasurement, [3], (error, results) => {
-        if (error)
-            throw error;
-        res.status(200).json(results.rows);
+        if (error){
+            res.status(400).send(error);
+        } else {
+            res.status(200).json(results.rows);
+        }        
     });
 }
 
 exports.getLatestMeasurementDevice4 = function(req, res, next) {
     // Get most recent measurement from db and return as JSON.
     pool.query(QueryForLatestMeasurement, [4], (error, results) => {
-        if (error)
-            throw error;
-        res.status(200).json(results.rows);
+        if (error){
+            res.status(400).send(error);
+        } else {
+            res.status(200).json(results.rows);
+        }        
     });
 }
 
 exports.getLatestMeasurementDevice5 = function(req, res, next) {
     // Get most recent measurement from db and return as JSON.
     pool.query(QueryForLatestMeasurement, [5], (error, results) => {
-        if (error)
-            throw error;
-        res.status(200).json(results.rows);
+        if (error){
+            res.status(400).send(error);
+        } else {
+            res.status(200).json(results.rows);
+        }        
     });
 }
