@@ -7,7 +7,7 @@ import py3nextion_lib  as nxlib    # simple python3 library to use nextion devic
 import nextionApp as nxApp         # initialization of the components of the Nextion display
 import RPi.GPIO as GPIO
 
-NUMBER_OF_DEVICES = 5
+NUMBER_OF_DEVICES = 8
 
 device_pin_0 = 16
 device_pin_1 = 20
